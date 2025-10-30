@@ -82,10 +82,10 @@ const TreeVisualization = ({ nodes: initialNodes, edges: initialEdges, highlight
   }, []);
 
   return (
-    <div className="relative w-full h-96 border border-gray-300 rounded-lg bg-gray-50 react-flow-container">
+    <div className="relative w-full h-96 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 react-flow-container">
       <button
         onClick={toggleFullscreen}
-        className="absolute top-2 right-2 z-10 px-3 py-1 bg-white border border-gray-300 rounded-md text-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="absolute top-2 right-2 z-10 px-3 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md text-sm hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
       </button>

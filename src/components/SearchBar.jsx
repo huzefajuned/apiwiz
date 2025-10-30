@@ -14,7 +14,7 @@ const SearchBar = ({ onSearch, searchResult, availablePaths = [] }) => {
   };
 
   return (
-    <div className="flex flex-col gap-3 p-4 bg-white border rounded-lg">
+    <div className="p-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg">
       <div className="flex gap-2">
         <input
           type="text"
@@ -22,37 +22,39 @@ const SearchBar = ({ onSearch, searchResult, availablePaths = [] }) => {
           onChange={(e) => setSearchPath(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder="Search by path (e.g., $.user.name, $.items[0].price)"
-          className="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
         />
         <button
           onClick={handleSearch}
-          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
         >
           Search
         </button>
       </div>
       
       {searchResult && (
-        <div className={`p-2 rounded-md text-sm ${
+        <div className={`mt-3 p-2 rounded-md text-sm ${
           searchResult.found 
-            ? 'bg-green-50 text-green-700 border border-green-200' 
-            : 'bg-red-50 text-red-700 border border-red-200'
+            ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800' 
+            : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800'
         }`}>
           {searchResult.found ? 'Match found' : 'No match found'}
         </div>
       )}
       
       {availablePaths.length > 0 && (
-        <details className="text-xs text-gray-600">
-          <summary className="cursor-pointer hover:text-gray-800">Available paths ({availablePaths.length})</summary>
-          <div className="mt-2 max-h-32 overflow-y-auto">
+        <details className="mt-3 text-xs text-gray-600 dark:text-gray-400">
+          <summary className="cursor-pointer hover:text-gray-800 dark:hover:text-gray-200">
+            Available paths ({availablePaths.length})
+          </summary>
+          <div className="mt-2 max-h-32 overflow-y-auto bg-gray-50 dark:bg-gray-700 rounded-md p-2">
             {availablePaths.slice(0, 10).map((path, index) => (
-              <div key={index} className="font-mono text-xs py-1 hover:bg-gray-100 cursor-pointer" 
+              <div key={index} className="font-mono text-xs py-1 px-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer rounded" 
                    onClick={() => setSearchPath(path)}>
                 {path}
               </div>
             ))}
-            {availablePaths.length > 10 && <div className="text-gray-400">...and {availablePaths.length - 10} more</div>}
+            {availablePaths.length > 10 && <div className="text-gray-400 dark:text-gray-500 text-xs px-2 py-1">...and {availablePaths.length - 10} more</div>}
           </div>
         </details>
       )}
