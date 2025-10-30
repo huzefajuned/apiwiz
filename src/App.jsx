@@ -79,7 +79,7 @@ function App() {
               <SearchBar 
                 onSearch={handleSearch} 
                 searchResult={searchResult} 
-                availablePaths={nodes.map(node => node.data.path)}
+                availablePaths={nodes?.map(node => node.data.path) || []}
               />
             </div>
 
